@@ -2,6 +2,7 @@ package reporter
 
 import (
 	"fmt"
+	"os"
 	"spike/internal/scanner/core"
 	"spike/pkg/config"
 	"spike/pkg/logger"
@@ -17,7 +18,8 @@ func NewTelegramNotifier(cfg *config.ReporterConfig) *TelegramNotifier {
 
 func (t *TelegramNotifier) OnDomainScanned(out *core.ScannerOutput, errs []error) {
 	if err := t.sendReport(out, errs); err != nil {
-		logger.Errorf("Failed to send Telegram report: %v", err)
+		fmt.Fprintln(os.Stderr)
+		logger.Errorf("Failed to send Telegram report for domain %s: %v", out.DomainScanned, err)
 	}
 }
 
