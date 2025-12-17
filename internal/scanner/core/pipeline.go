@@ -30,9 +30,11 @@ func WildCardDomainPipeline() []PipelineStep {
 func SingleDomainPipeline() []PipelineStep {
 	return []PipelineStep{
 		{Step: HttpxStep{}, InputFrom: []string{"__root_domain__"}},
+		{Step: GauStep{}, InputFrom: []string{"__root_domain__"}},
 		{Step: CachexStep{}, InputFrom: []string{"httpx"}},
 		{Step: KatanaStep{}, InputFrom: []string{"httpx"}},
+		{Step: LiveCrawledUrlsStep{}, InputFrom: []string{"katana", "gau"}},
 		{Step: NucleiGenericStep{}, InputFrom: []string{"httpx"}},
-		{Step: NucleiDastStep{}, InputFrom: []string{"httpx"}},
+		{Step: NucleiDastStep{}, InputFrom: []string{"live_crawled_urls"}},
 	}
 }
