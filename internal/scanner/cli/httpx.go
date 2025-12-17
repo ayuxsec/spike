@@ -8,6 +8,9 @@ import (
 )
 
 func RunHTTPX(targets []string, cfg *config.HTTPXConfig) ([]string, error) {
+	if len(targets) == 0 {
+		return nil, nil
+	}
 	logger.Infof("Running httpx on %d %s", len(targets), inferHttpxTargetType(targets[0]))
 
 	args := []string{"-threads", strconv.Itoa(cfg.Threads)}
