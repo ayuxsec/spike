@@ -45,25 +45,20 @@ func Run(scanMode core.ScanMode) error {
 			return err
 		}
 	}
-
-	// create scanner
-	scanner, err := core.NewScanner(
+	// create spike wrapper
+	scanner, err := spike.New(
 		&config.Cfg.ToolsConfig,
 		&config.Cfg.Reporter,
 		domains,
 		dbPath,
 		scanMode,
 	)
-
 	if err != nil {
 		return fmt.Errorf("failed to create scanner: %v", err)
 	}
 
-	// create spike wrapper
-	spk := spike.NewSpike(scanner, &config.Cfg.Reporter)
-
 	// run engine
-	return spk.Run()
+	return scanner.Run()
 }
 
 func collectDomains() ([]string, error) {

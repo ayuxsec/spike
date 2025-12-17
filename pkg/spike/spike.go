@@ -14,11 +14,29 @@ type Spike struct {
 	ReporterCfg *config.ReporterConfig
 }
 
-func NewSpike(scanner *core.Scanner, reporterCfg *config.ReporterConfig) *Spike {
+func New(
+	toolsCfg *config.ToolsConfig,
+	reporterCfg *config.ReporterConfig,
+	inputDomains []string,
+	dbPath string,
+	scanMode core.ScanMode,
+) (*Spike, error) {
+
+	scanner, err := core.NewScanner(
+		toolsCfg,
+		reporterCfg,
+		inputDomains,
+		dbPath,
+		scanMode,
+	)
+	if err != nil {
+		return nil, err
+	}
+
 	return &Spike{
 		Scanner:     scanner,
 		ReporterCfg: reporterCfg,
-	}
+	}, nil
 }
 
 func (s *Spike) Run() error {
