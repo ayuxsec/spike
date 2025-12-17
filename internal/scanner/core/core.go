@@ -3,6 +3,7 @@ package core
 import (
 	"errors"
 	"fmt"
+	"os"
 	"strings"
 
 	"spike/internal/scanner/cli"
@@ -158,7 +159,7 @@ func (s *Scanner) scanDomain(domainName string) (*ScannerOutput, []error) {
 		step := p.Step
 		stepName := step.Name()
 
-		fmt.Println() // trailing newline for better readability
+		fmt.Fprintln(os.Stderr) // trailing newline for better readability
 
 		// Collect correct inputs based on dependencies
 		var input []string
