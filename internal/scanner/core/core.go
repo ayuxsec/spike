@@ -38,6 +38,7 @@ func NewScanner(
 
 	// initialize database connection
 	dbClient := &db.DB{}
+	logger.Debugf("using db path: %s", dbPath)
 	if err := dbClient.Connect(dbPath); err != nil {
 		return nil, fmt.Errorf("failed to connect to database: %v", err)
 	}
