@@ -35,21 +35,21 @@ func GenerateScanReport(so *scanner.ScannerOutput) (string, error) {
 	fmt.Fprintf(&b, "Nuclei Scan Vulnerabilities found: %d\n", len(so.NucleiFindings))
 	fmt.Fprintf(&b, "Cache Poisoning Vulnerabilitie found: %d\n", len(so.CachexResults))
 
-	if len(so.NucleiFindings) > 0 {
-		b.WriteString("\nNuclei Scan Vulnerabilities:\n")
-		for _, nucleiOutput := range so.NucleiFindings {
-			b.WriteString(nucleiOutput)
-			b.WriteByte('\n')
-		}
-	}
+	// if len(so.NucleiFindings) > 0 {
+	// 	b.WriteString("\nNuclei Scan Vulnerabilities:\n")
+	// 	for _, nucleiOutput := range so.NucleiFindings {
+	// 		b.WriteString(nucleiOutput)
+	// 		b.WriteByte('\n')
+	// 	}
+	// }
 
-	if len(so.CachexResults) > 0 {
-		b.WriteString("\nCachex Results:\n")
-		for _, cachexOutput := range so.CachexResults {
-			b.WriteString(cachexOutput)
-			b.WriteByte('\n')
-		}
-	}
+	// if len(so.CachexResults) > 0 {
+	// 	b.WriteString("\nCachex Results:\n")
+	// 	for _, cachexOutput := range so.CachexResults {
+	// 		b.WriteString(cachexOutput)
+	// 		b.WriteByte('\n')
+	// 	}
+	// }
 
 	return b.String(), nil
 }
