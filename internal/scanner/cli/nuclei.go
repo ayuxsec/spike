@@ -39,11 +39,13 @@ func RunNuclei(targets []string, cfg *config.NucleiConfig, scanType NucleiScanTy
 
 	include := strings.TrimRight(strings.Join(cfg.TemplatePaths.Generic.Include, ","), ",")
 	exclude := strings.TrimRight(strings.Join(cfg.TemplatePaths.Generic.Exclude, ","), ",")
+	excludeSeverity := strings.TrimRight(strings.Join(cfg.TemplatePaths.Generic.ExcludeSeverity, ","), ",")
 
 	cliArgs := []string{
 		"-c", strconv.Itoa(cfg.Threads),
 		"-it", include,
 		"-et", exclude,
+		"-es", excludeSeverity,
 	}
 
 	args = append(args, cliArgs...)

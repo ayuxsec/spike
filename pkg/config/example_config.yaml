@@ -38,11 +38,15 @@ tools:
                     - http/cves/2020
                 exclude:
                     - http/cves/
+                exclude_severity:
+                    - info
             dast:
                 include:
                     - dast/
                 exclude:
                     - ""
+                exclude_severity:
+                    - info
     cachex:
         enabled: true
         threads: 10

@@ -58,10 +58,12 @@ func DefaultConfig() *Config {
 						Exclude: []string{
 							"http/cves/", // exclude all other CVE templates
 						},
+						ExcludeSeverity: []string{"info"},
 					},
 					Dast: NucleiTemplatePathSet{
-						Include: []string{"dast/"},
-						Exclude: []string{""},
+						Include:         []string{"dast/"},
+						Exclude:         []string{""},
+						ExcludeSeverity: []string{"info"},
 					},
 				},
 				TemplateSettings: NucleiTemplateSettings{

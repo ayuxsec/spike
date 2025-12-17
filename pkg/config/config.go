@@ -56,8 +56,9 @@ type NucleiTemplatePaths struct {
 }
 
 type NucleiTemplatePathSet struct {
-	Include []string `yaml:"include"`
-	Exclude []string `yaml:"exclude"`
+	Include         []string `yaml:"include"`
+	Exclude         []string `yaml:"exclude"`
+	ExcludeSeverity []string `yaml:"exclude_severity"`
 }
 
 type NucleiTemplateSettings struct {
