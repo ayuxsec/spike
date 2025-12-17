@@ -44,15 +44,16 @@ func (t *TelegramNotifier) sendReport(out *core.ScannerOutput, errs []error) err
 		return fmt.Errorf("failed to send Telegram message: %v", err)
 	}
 
-	err = sendTelegramMessage(
-		t.cfg.Telegram.ChatID,
-		t.cfg.Telegram.BotToken,
-		generateErrsReport(out.DomainScanned, errs),
-		t.cfg.Telegram.Timeout,
-	)
-	if err != nil {
-		return fmt.Errorf("failed to send Telegram error report: %v", err)
+	if errReport := generateErrsReport(out.DomainScanned, errs); errReport != "" {
+		err = sendTelegramMessage(
+			t.cfg.Telegram.ChatID,
+			t.cfg.Telegram.BotToken,
+			generateErrsReport(out.DomainScanned, errs),
+			t.cfg.Telegram.Timeout,
+		)
+		if err != nil {
+			return fmt.Errorf("failed to send Telegram error report: %v", err)
+		}
 	}
-
 	return nil
 }

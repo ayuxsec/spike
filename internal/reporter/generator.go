@@ -55,6 +55,9 @@ func GenerateScanReport(so *scanner.ScannerOutput) (string, error) {
 }
 
 func generateErrsReport(domainName string, errs []error) string {
+	if len(errs) == 0 {
+		return ""
+	}
 	var b strings.Builder
 	fmt.Fprintf(&b, "Errors occurred during scan of %s:\n", domainName)
 	for _, e := range errs {
