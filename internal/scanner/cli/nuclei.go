@@ -24,18 +24,24 @@ func (nst NucleiScanType) String() string {
 	return "Unknown"
 }
 
-func RunNuclei(targets []string, cfg *config.NucleiConfig, scanType NucleiScanType) ([]string, error) {
-	var args []string
-	var targetType string
+func inferNucleiTargetType(scanType NucleiScanType) string {
 	switch scanType {
 	case NucleiDastScanType:
-		args = append(args, "-dast")
-		targetType = "crawled urls" // expected target to be passed when run in DAST mode
+		return "crawled urls" // expected target to be passed when run in DAST mode
 	case NucleiGenericScanType:
-		targetType = "http servers" // expected target to be passed when run in Generic mode
+		return "http servers" // expected target to be passed when run in Generic mode
+	}
+	return "Unknown"
+}
+
+func RunNuclei(targets []string, cfg *config.NucleiConfig, scanType NucleiScanType) ([]string, error) {
+	var args []string
+	if scanType == NucleiDastScanType {
+		args = append(args, "-dast")
 	}
 
-	logger.Infof("Running Nuclei %s scan on %d %s", scanType.String(), len(targets), targetType)
+	logger.Infof("Running Nuclei %s scan on %d %s", scanType.String(), len(targets),
+		inferNucleiTargetType(NucleiDastScanType))
 
 	include := strings.TrimRight(strings.Join(cfg.TemplatePaths.Generic.Include, ","), ",")
 	exclude := strings.TrimRight(strings.Join(cfg.TemplatePaths.Generic.Exclude, ","), ",")
