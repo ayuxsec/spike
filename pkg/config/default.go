@@ -7,7 +7,7 @@ import (
 
 var homeDir = os.Getenv("HOME")
 var appName = "spike"
-var DefaultAppDir = filepath.Join(homeDir, "."+appName)
+var DefaultAppDir = filepath.Join(homeDir, appName)
 
 func DefaultConfig() *Config {
 	//logger.Debugf("Using $HOME directory as: %s", homeDir)
