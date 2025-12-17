@@ -1,0 +1,54 @@
+tools:
+    httpx:
+        threads: 25
+        screenshot: false
+    subfinder:
+        threads: 10
+        enabled: true
+    katana:
+        enabled: true
+        threads: 10
+        crawl_depth: 3
+        max_crawl_time: 10m
+        parallelism_threads: 10
+        headless: false
+        no_sandbox: false
+    gau:
+        enabled: true
+        threads: 10
+    nuclei:
+        threads: 25
+        template_settings:
+            generic: true
+            dast: true
+            headless: false
+        template_paths:
+            generic:
+                include:
+                    - http/
+                    - cloud/
+                    - javascript/
+                    - dns/
+                    - ssl/
+                    - network/
+                    - http/cves/2024
+                    - http/cves/2023
+                    - http/cves/2022
+                    - http/cves/2021
+                    - http/cves/2020
+                exclude:
+                    - http/cves/
+            dast:
+                include:
+                    - dast/
+                exclude:
+                    - ""
+    cachex:
+        enabled: true
+        threads: 10
+reporter:
+    telegram:
+        enabled: false
+        bot_token: ""
+        chat_id: 0
+        timeout: 10

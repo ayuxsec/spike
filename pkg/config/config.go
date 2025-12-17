@@ -46,8 +46,8 @@ type GauConfig struct {
 
 type NucleiConfig struct {
 	Threads          int                    `yaml:"threads"`
-	TemplatePaths    NucleiTemplatePaths    `yaml:"template_paths"`
 	TemplateSettings NucleiTemplateSettings `yaml:"template_settings"`
+	TemplatePaths    NucleiTemplatePaths    `yaml:"template_paths"`
 }
 
 type NucleiTemplatePaths struct {
