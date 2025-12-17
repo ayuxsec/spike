@@ -20,7 +20,9 @@ func NewScanner(
 	scanMode ScanMode,
 ) (*Scanner, error) {
 
-	cli.WarnIfToolsMissing()
+	if err := cli.WarnIfToolsMissing(); err != nil {
+		return &Scanner{}, err
+	}
 
 	s := &Scanner{
 		InputDomains: inputDomains,

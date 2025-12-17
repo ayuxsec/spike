@@ -5,6 +5,7 @@ import (
 	"fmt"
 	"os/exec"
 	"spike/pkg/logger"
+	"strings"
 )
 
 // requiredToolsList defines the list of essential external tools needed for scanning.
@@ -19,6 +20,7 @@ var requiredToolsList = []string{
 }
 
 func WarnIfToolsMissing() error {
+	var isAnyMissing bool
 	for _, tool := range requiredToolsList {
 		isInstalled, err := ChkCmdInstalled(tool)
 		if err != nil {
@@ -26,10 +28,24 @@ func WarnIfToolsMissing() error {
 			continue
 		}
 		if !isInstalled {
+			isAnyMissing = true
 			logger.Warnf("tool '%s' not found in PATH related scan steps will be skipped", tool)
 		}
 	}
+	if isAnyMissing {
+		if !askConfirm("Some required tools are missing. Do you still want to continue?") {
+			return errors.New("user aborted due to missing required tools")
+		}
+	}
 	return nil
+}
+
+func askConfirm(prompt string) bool {
+	logger.Warn(prompt + " [y/N]: ")
+	var resp string
+	_, _ = fmt.Scanln(&resp)
+	resp = strings.ToLower(strings.TrimSpace(resp))
+	return resp == "y" || resp == "yes"
 }
 
 func ChkCmdInstalled(cmdName string) (bool, error) {
