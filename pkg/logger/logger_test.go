@@ -17,6 +17,7 @@ func TestLogger(t *testing.T) {
 	Success("This is a success message")
 	Successf("This is a success message with format: %s", "formatted")
 	Warn("This is a warning message")
+	WarnNoNL("This is a warning message without newline")
 	Warnf("This is a warning message with format: %s", "formatted")
 	Debug("This is a debug message")
 	Debugf("This is a debug message with format: %s", "formatted")

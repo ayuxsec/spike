@@ -67,6 +67,14 @@ func Warnf(format string, a ...any) {
 	Warn(fmt.Sprintf(format, a...))
 }
 
+func WarnNoNL(message string) {
+	if DisableWarn {
+		return
+	}
+	warnColor.Fprint(os.Stderr, "[WRN] ")
+	fmt.Fprint(os.Stderr, formatMessage(message))
+}
+
 func Debug(message string) {
 	if DisableDebug {
 		return
