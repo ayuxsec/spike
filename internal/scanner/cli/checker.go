@@ -41,7 +41,7 @@ func WarnIfToolsMissing() error {
 }
 
 func askConfirm(prompt string) bool {
-	logger.Warn(prompt + " [y/N]: ")
+	logger.WarnNoNL(prompt + " [y/N]: ")
 	var resp string
 	_, _ = fmt.Scanln(&resp)
 	resp = strings.ToLower(strings.TrimSpace(resp))
