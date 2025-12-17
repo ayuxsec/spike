@@ -61,5 +61,5 @@ func RunNuclei(targets []string, cfg *config.NucleiConfig, scanType NucleiScanTy
 		args = append(args, "-headless")
 	}
 
-	return RunCommandWithStdinInput("nuclei", args, targets)
+	return RunCommandWithStdinInput("nuclei", args, targets, cfg.CmdTimeout)
 }

@@ -12,5 +12,5 @@ func RunCachex(targets []string, c *config.CachexConfig) ([]string, error) {
 		logger.Warn("cachex is disabled in the config, skipping cachex scan")
 		return nil, nil
 	}
-	return RunCommandWithStdinInput("cachex", []string{"-t", strconv.Itoa(c.Threads)}, targets)
+	return RunCommandWithStdinInput("cachex", []string{"-t", strconv.Itoa(c.Threads)}, targets, c.CmdTimeout)
 }

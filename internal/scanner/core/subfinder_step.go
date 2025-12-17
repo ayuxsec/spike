@@ -15,7 +15,7 @@ func (SubfinderStep) RequiredTools() []string {
 }
 
 func (SubfinderStep) Run(s *Scanner, rootDomain []string) ([]string, error) {
-	return cli.RunSubfinder(rootDomain[0], s.ToolsCfg.Subfinder.Threads)
+	return cli.RunSubfinder(rootDomain[0], &s.ToolsCfg.Subfinder)
 }
 
 func (SubfinderStep) Store(s *Scanner, out []string) error {

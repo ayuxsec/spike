@@ -2,9 +2,11 @@ tools:
     httpx:
         threads: 25
         screenshot: false
+        cmd_timeout_in_second: 900
     subfinder:
         threads: 10
         enabled: true
+        cmd_timeout_in_second: 900
     katana:
         enabled: true
         threads: 10
@@ -13,9 +15,11 @@ tools:
         parallelism_threads: 10
         headless: false
         no_sandbox: false
+        cmd_timeout_in_second: 900
     gau:
         enabled: true
         threads: 10
+        cmd_timeout_in_second: 900
     nuclei:
         threads: 25
         template_settings:
@@ -47,12 +51,14 @@ tools:
                     - ""
                 exclude_severity:
                     - info
+        cmd_timeout_in_second: 900
     cachex:
         enabled: true
         threads: 10
+        cmd_timeout_in_second: 900
 reporter:
     telegram:
         enabled: false
         bot_token: ""
         chat_id: 0
-        timeout: 10
+        request_timeout: 10

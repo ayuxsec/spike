@@ -2,14 +2,14 @@ package cli
 
 import (
 	"spike/internal/scanner/db"
+	"spike/pkg/config"
 	"testing"
 )
 
 func TestRunSubfinder(t *testing.T) {
-	domain := "example.com"
-	threads := 10
+	s := config.DefaultConfig().ToolsConfig.Subfinder
 
-	subdomains, err := RunSubfinder(domain, threads)
+	subdomains, err := RunSubfinder("example.com", &s)
 	if err != nil {
 		t.Fatalf("RunSubfinder failed: %v", err)
 	}

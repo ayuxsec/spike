@@ -2,11 +2,12 @@
 package cli
 
 import (
+	"spike/pkg/config"
 	"strconv"
 )
 
 // RunSubfinder executes the subfinder tool for the given domain with specified threads
-func RunSubfinder(domain string, Threads int) ([]string, error) {
-	args := []string{"-d", domain, "-all", "-t", strconv.Itoa(Threads)}
-	return RunCommand("subfinder", args)
+func RunSubfinder(domain string, s *config.SubfinderConfig) ([]string, error) {
+	args := []string{"-d", domain, "-all", "-t", strconv.Itoa(s.Threads)}
+	return RunCommand("subfinder", args, s.CmdTimeout)
 }

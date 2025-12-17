@@ -15,7 +15,7 @@ func RunHTTPX(targets []string, cfg *config.HTTPXConfig) ([]string, error) {
 		args = append(args, "-ss")
 	}
 
-	return RunCommandWithStdinInput("httpx", args, targets)
+	return RunCommandWithStdinInput("httpx", args, targets, cfg.CmdTimeout)
 }
 
 func inferHttpxTargetType(url string) string {

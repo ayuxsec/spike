@@ -26,5 +26,5 @@ func RunKatana(targets []string, k *config.KatanaConfig) ([]string, error) {
 	if k.NoSandbox {
 		katanaArgs = append(katanaArgs, "-no-sandbox")
 	}
-	return RunCommandWithStdinInput("katana", katanaArgs, targets)
+	return RunCommandWithStdinInput("katana", katanaArgs, targets, k.CmdTimeout)
 }

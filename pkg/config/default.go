@@ -9,6 +9,8 @@ var homeDir = os.Getenv("HOME")
 var appName = "spike"
 var DefaultAppDir = filepath.Join(homeDir, appName)
 
+const GlobalCmdTimeout = 900
+
 func DefaultConfig() *Config {
 	//logger.Debugf("Using $HOME directory as: %s", homeDir)
 	return &Config{
@@ -16,14 +18,17 @@ func DefaultConfig() *Config {
 			HTTPX: HTTPXConfig{
 				Threads:    25,
 				ScreenShot: false,
+				CmdTimeout: GlobalCmdTimeout,
 			},
 			Subfinder: SubfinderConfig{
-				Threads: 10,
-				Enabled: true,
+				Threads:    10,
+				Enabled:    true,
+				CmdTimeout: GlobalCmdTimeout,
 			},
 			Gau: GauConfig{
-				Enabled: true,
-				Threads: 10,
+				Enabled:    true,
+				Threads:    10,
+				CmdTimeout: GlobalCmdTimeout,
 			},
 			Katana: KatanaConfig{
 				Enabled:            true,
@@ -33,10 +38,12 @@ func DefaultConfig() *Config {
 				ParallelismThreads: 10,
 				Headless:           false,
 				NoSandbox:          false,
+				CmdTimeout:         GlobalCmdTimeout,
 			},
 			Cachex: CachexConfig{ // check ~/cachex/config.yaml for better customization
-				Enabled: true,
-				Threads: 10,
+				Enabled:    true,
+				Threads:    10,
+				CmdTimeout: GlobalCmdTimeout,
 			},
 			Nuclei: NucleiConfig{
 				Threads: 25,
@@ -71,6 +78,7 @@ func DefaultConfig() *Config {
 					Dast:     true,
 					Headless: false,
 				},
+				CmdTimeout: GlobalCmdTimeout,
 			},
 		},
 		Reporter: ReporterConfig{

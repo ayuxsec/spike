@@ -15,18 +15,21 @@ type ToolsConfig struct {
 }
 
 type CachexConfig struct {
-	Enabled bool `yaml:"enabled"`
-	Threads int  `yaml:"threads"`
+	Enabled    bool `yaml:"enabled"`
+	Threads    int  `yaml:"threads"`
+	CmdTimeout int  `yaml:"cmd_timeout_in_second"`
 }
 
 type HTTPXConfig struct {
 	Threads    int  `yaml:"threads"`
 	ScreenShot bool `yaml:"screenshot"`
+	CmdTimeout int  `yaml:"cmd_timeout_in_second"`
 }
 
 type SubfinderConfig struct {
-	Threads int  `yaml:"threads"`
-	Enabled bool `yaml:"enabled"`
+	Threads    int  `yaml:"threads"`
+	Enabled    bool `yaml:"enabled"`
+	CmdTimeout int  `yaml:"cmd_timeout_in_second"`
 }
 
 type KatanaConfig struct {
@@ -37,17 +40,20 @@ type KatanaConfig struct {
 	ParallelismThreads int    `yaml:"parallelism_threads"`
 	Headless           bool   `yaml:"headless"`
 	NoSandbox          bool   `yaml:"no_sandbox"`
+	CmdTimeout         int    `yaml:"cmd_timeout_in_second"`
 }
 
 type GauConfig struct {
-	Enabled bool `yaml:"enabled"`
-	Threads int  `yaml:"threads"`
+	Enabled    bool `yaml:"enabled"`
+	Threads    int  `yaml:"threads"`
+	CmdTimeout int  `yaml:"cmd_timeout_in_second"`
 }
 
 type NucleiConfig struct {
 	Threads          int                    `yaml:"threads"`
 	TemplateSettings NucleiTemplateSettings `yaml:"template_settings"`
 	TemplatePaths    NucleiTemplatePaths    `yaml:"template_paths"`
+	CmdTimeout       int                    `yaml:"cmd_timeout_in_second"`
 }
 
 type NucleiTemplatePaths struct {
@@ -75,5 +81,5 @@ type TelegramConfig struct {
 	Enabled  bool   `yaml:"enabled"`
 	BotToken string `yaml:"bot_token"`
 	ChatID   int    `yaml:"chat_id"`
-	Timeout  int    `yaml:"timeout"`
+	Timeout  int    `yaml:"request_timeout"`
 }

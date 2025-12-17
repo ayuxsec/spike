@@ -20,5 +20,5 @@ func RunGau(domain string, g *config.GauConfig) ([]string, error) {
 	} else {
 		args = append(args, domain)
 	}
-	return RunCommand("gau", args)
+	return RunCommand("gau", args, g.CmdTimeout)
 }
