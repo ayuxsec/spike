@@ -2,6 +2,7 @@ package core
 
 import (
 	"spike/internal/scanner/cli"
+	"spike/pkg/logger"
 )
 
 type LiveCrawledUrlsStep struct{}
@@ -23,12 +24,14 @@ func (LiveCrawledUrlsStep) Run(s *Scanner, urls []string) ([]string, error) {
 	if err != nil {
 		return nil, err
 	}
+	logger.Infof("Recieved %d results from uro, will be passed to httpx to filter dead urls.", len(uroOut))
 
 	// 2) Run httpx to verify live URLs
 	live, err := cli.RunHTTPX(uroOut, &s.ToolsCfg.HTTPX)
 	if err != nil {
 		return nil, err
 	}
+	logger.Infof("Recieved %d results from httpx.", len(live))
 
 	return live, nil
 }
