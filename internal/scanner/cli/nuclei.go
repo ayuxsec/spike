@@ -46,6 +46,7 @@ func RunNuclei(targets []string, cfg *config.NucleiConfig, scanType NucleiScanTy
 		"-it", include,
 		"-et", exclude,
 		"-es", excludeSeverity,
+		"-nc", "-silent",
 	}
 
 	args = append(args, cliArgs...)
