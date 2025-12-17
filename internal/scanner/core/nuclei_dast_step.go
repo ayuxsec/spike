@@ -15,7 +15,7 @@ func (NucleiDastStep) RequiredTools() []string {
 }
 
 func (NucleiDastStep) Run(s *Scanner, input []string) ([]string, error) {
-	return cli.RunNuclei(input, &s.ToolsCfg.Nuclei, cli.NucleiDastScanType)
+	return cli.RunNuclei(filterJsEndpoints(input), &s.ToolsCfg.Nuclei, cli.NucleiDastScanType)
 }
 
 func (NucleiDastStep) Store(s *Scanner, out []string) error {
