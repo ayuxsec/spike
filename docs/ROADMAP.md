@@ -20,6 +20,7 @@ The roadmap prioritizes:
 - [ ] Automatic nuclei template updates
 - [ ] Better error aggregation & per-step failure visibility
 - [ ] Spike Shell REPL-like workflow Support (Interactive DB CLI)
+- [ ] AI-generated post-scan reports (automatic summaries from Spike output after each scan)
 
 ## 📊 UI & Reporting
 
