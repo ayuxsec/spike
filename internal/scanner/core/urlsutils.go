@@ -2,16 +2,18 @@ package core
 
 import "strings"
 
+// This function filters out JavaScript endpoints from a list of URLs.
 func filterJsEndpoints(urls []string) []string {
-	jsEndpoints := make([]string, 0, len(urls))
+	filteredJsEndpoints := make([]string, 0, len(urls))
 	for _, url := range urls {
-		if isJsEndpoint(url) {
-			jsEndpoints = append(jsEndpoints, url)
+		if !isJsEndpoint(url) {
+			filteredJsEndpoints = append(filteredJsEndpoints, url)
 		}
 	}
-	return jsEndpoints
+	return filteredJsEndpoints
 }
 
+// isJsEndpoint checks if the given URL is a JavaScript endpoint.
 func isJsEndpoint(url string) bool {
-	return !strings.HasSuffix(strings.Split(url, "?")[0], ".js")
+	return strings.HasSuffix(strings.Split(url, "?")[0], ".js")
 }
