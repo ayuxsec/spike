@@ -1,0 +1,34 @@
+name: Generate repo tree
+
+on:
+  push:
+    branches: [ "main" ]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  tree:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Install tree
+        run: sudo apt-get update && sudo apt-get install -y tree
+
+      - name: Generate tree
+        run: |
+          mkdir -p docs
+          { printf "## Repository Tree\n\n \`\`\`console\n"; tree -a -I '.git|.github'; printf "\n\`\`\`\n"; } > docs/tree.md
+
+      - name: Commit and push
+        run: |
+          git config user.name "github-actions[bot]"
+          # https://github.com/orgs/community/discussions/26560#discussioncomment-3252339
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com" 
+          git add docs/tree.md
+          git commit -m "docs: update repository tree" || echo "No changes to commit"
+          git push
