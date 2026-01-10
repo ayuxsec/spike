@@ -47,7 +47,7 @@ func NewREPLShell(dbPath string) error {
 		}
 
 		if err := handleCommand(ctx, args); err != nil {
-			fmt.Println("error: ", err)
+			fmt.Println(err)
 		}
 	}
 
