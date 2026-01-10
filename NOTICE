@@ -26,6 +26,10 @@ Spike uses several open-source tools and libraries. Their respective licenses ap
    https://github.com/s0md3v/uro  
    License: Apache
 
+4. Gau
+   https://github.com/lc/gau
+   License: MIT
+
 License texts for all dependencies are available in their respective repositories.
 
 ---
