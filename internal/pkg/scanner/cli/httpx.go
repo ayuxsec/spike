@@ -20,14 +20,11 @@ func RunHTTPX(targets []string, cfg *config.HTTPXConfig, scanPorts bool) ([]stri
 	}
 
 	if scanPorts {
-		if len(cfg.TargetPorts.Http) != 0 {
-			httpPortsSpec := strings.TrimRight(strings.Join(cfg.TargetPorts.Http, ","), ",")
-			args = append(args, "-ports", "http:"+httpPortsSpec)
+		if cfg.TargetPorts.Http != "" {
+			args = append(args, "-ports", "http:"+cfg.TargetPorts.Http)
 		}
-
-		if len(cfg.TargetPorts.Https) != 0 {
-			httpsPortsSpec := strings.TrimRight(strings.Join(cfg.TargetPorts.Https, ","), ",")
-			args = append(args, "-ports", "https:"+httpsPortsSpec)
+		if cfg.TargetPorts.Https != "" {
+			args = append(args, "-ports", "https:"+cfg.TargetPorts.Https)
 		}
 	}
 

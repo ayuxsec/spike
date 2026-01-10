@@ -43,38 +43,8 @@ tools:                                 # Tool configuration
     httpx:
         threads: 25                    # Number of concurrent httpx workers
         ports_to_scan:                 # Ports to probe for web services
-            http:
-                - "80"                 # Standard HTTP
-                - "8080"               # Alternate HTTP
-                - "8000"               # Dev servers
-                - "8008"               # Proxies / alt HTTP
-                - "8888"               # Dashboards / dev tools
-                - "3000"               # Node / frontend
-                - "5000"               # Flask / APIs
-                - "9000"               # Internal apps
-                - "81"                 # Additional HTTP ports
-                - "82"
-                - "83"
-                - "84"
-                - "591"                # FileMaker web
-                - "2082"               # cPanel HTTP
-                - "2086"               # WHM HTTP
-                - "2095"               # Webmail HTTP
-                - "10000"              # Webmin HTTP
-            https:
-                - "443"                # Standard HTTPS
-                - "8443"               # Admin panels / dashboards
-                - "9443"               # Enterprise consoles
-                - "5001"               # HTTPS APIs
-                - "3001"               # HTTPS frontend
-                - "8001"               # TLS dev servers
-                - "8081"               # Alternate HTTPS
-                - "2083"               # cPanel HTTPS
-                - "2087"               # WHM HTTPS
-                - "2096"               # Webmail HTTPS
-                - "10001"              # Webmin HTTPS
-                - "10443"              # Alternate TLS
-                - "10444"              # Alternate TLS
+            http: 80,8080,8000,8008,8888,3000,5000,9000,81,82,83,84,591,2082,2086,2095,10000
+            https: 443,8443,9443,5001,3001,8001,8081,2083,2087,2096,10001,10443,10444
         screenshot: false              # Capture screenshots of discovered pages
         cmd_timeout_in_second: 900     # Max execution time
 

@@ -4,7 +4,7 @@ import (
 	"testing"
 )
 
-func TestCreateCg(t *testing.T) {
+func TestCreateCfg(t *testing.T) {
 	if err := CreateDefaultCfg("config_test.yaml"); err != nil {
 		t.Log(err)
 	}

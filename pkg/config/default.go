@@ -18,38 +18,8 @@ func DefaultConfig() *Config {
 			HTTPX: HTTPXConfig{
 				Threads: 25,
 				TargetPorts: HttxPortsConfig{
-					Http: []string{
-						"80",                   // Standard HTTP
-						"8080",                 // Common alternate HTTP
-						"8000",                 // Dev servers
-						"8008",                 // Proxies / alt HTTP
-						"8888",                 // Dashboards / dev tools
-						"3000",                 // Node / frontend dev
-						"5000",                 // Flask / APIs
-						"9000",                 // Internal apps / PHP frontends
-						"81", "82", "83", "84", // Extra HTTP ports
-						"591",   // FileMaker web
-						"2082",  // cPanel HTTP
-						"2086",  // WHM HTTP
-						"2095",  // Webmail HTTP
-						"10000", // Webmin (often HTTP)
-					},
-					Https: []string{
-						"443",  // Standard HTTPS
-						"8443", // Admin panels, dashboards
-						"9443", // Enterprise / management consoles
-						// Dev / API servers over TLS (Flask, FastAPI, Node, Go, etc.)
-						"5001",  // HTTPS version of Flask (5000)
-						"3001",  // HTTPS Node / frontend
-						"8001",  // HTTPS dev servers
-						"8081",  // HTTPS alternate
-						"2083",  // cPanel HTTPS
-						"2087",  // WHM HTTPS
-						"2096",  // Webmail HTTPS
-						"10001", // Webmin over HTTPS (some setups)
-						"10443", // Alternate TLS
-						"10444", // Alternate TLS
-					},
+					Http:  "80,8080,8000,8008,8888,3000,5000,9000,81,82,83,84,591,2082,2086,2095,10000",
+					Https: "443,8443,9443,5001,3001,8001,8081,2083,2087,2096,10001,10443,10444",
 				},
 				ScreenShot: false,
 				CmdTimeout: GlobalCmdTimeout,

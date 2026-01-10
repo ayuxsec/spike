@@ -28,8 +28,8 @@ type HTTPXConfig struct {
 }
 
 type HttxPortsConfig struct {
-	Http  []string `yaml:"http"`
-	Https []string `yaml:"https"`
+	Http  string `yaml:"http"`  // comma separated list of ports
+	Https string `yaml:"https"` // comma separated list of ports
 }
 
 type SubfinderConfig struct {
