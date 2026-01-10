@@ -47,18 +47,30 @@ func handleCommand(ctx *Context, args []string) error {
 
 	// todo: handle errors
 	case "subs":
+		if ctx.Domain == nil {
+			return fmt.Errorf("no domain selected (use: select <domain>)")
+		}
 		data, _ := toolsRepo.Subfinder.Fetch(ctx.Domain.Id)
 		fmt.Fprint(&output, strings.Join(data, "\n"))
 
 	case "httpx":
+		if ctx.Domain == nil {
+			return fmt.Errorf("no domain selected (use: select <domain>)")
+		}
 		data, _ := toolsRepo.Httpx.Fetch(ctx.Domain.Id)
 		fmt.Fprint(&output, strings.Join(data, "\n"))
 
 	case "uro":
+		if ctx.Domain == nil {
+			return fmt.Errorf("no domain selected (use: select <domain>)")
+		}
 		data, _ := toolsRepo.Uro.Fetch(ctx.Domain.Id)
 		fmt.Fprint(&output, strings.Join(data, "\n"))
 
 	case "nuclei":
+		if ctx.Domain == nil {
+			return fmt.Errorf("no domain selected (use: select <domain>)")
+		}
 		data, _ := toolsRepo.Nuclei.Fetch(ctx.Domain.Id)
 		fmt.Fprint(&output, strings.Join(data, "\n"))
 
