@@ -19,3 +19,8 @@ bin:
 install-bin:
 	$(MAKE) build
 	$(MAKE) bin
+
+.PHONY: lint
+lint:
+	command -v golangci-lint || go install github.com/golangci/golangci-lint/cmd/golangci-lint@latest
+	golangci-lint run --timeout 3m --verbose
