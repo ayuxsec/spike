@@ -1,5 +1,5 @@
 - [x] Add REPL Shell
-- [ ] Allow executing shell commands in the REPL when output piped
+- [x] Allow executing shell commands in the REPL when output piped
 - [ ] Use https://github.com/TheZoraiz/ascii-image-converter to generate ascii banner for REPL shell?
 - [ ] Fix when interrupt tool dies instead of doing something with paritial output (resume logic?)
 - [ ] Add HTML output
@@ -7,3 +7,4 @@
 - [x] change module name to `github.com/ayuxsec/spike` so goreleaser can inject version and go tool chain can work
 - [ ] move package db from scanner package to `internal/pkg` folder
 - [ ] Support GNU Bash style history navigation through arrow keys in REPL Shell
+- [ ] Fix Shell redirection not working in REPL
