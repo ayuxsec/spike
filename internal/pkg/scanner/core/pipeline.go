@@ -1,6 +1,8 @@
 package core
 
-import "strings"
+import (
+	"strings"
+)
 
 type PipelineStep struct {
 	Step      ToolStep
@@ -8,9 +10,13 @@ type PipelineStep struct {
 }
 
 func (s *Scanner) selectPipeline() []PipelineStep {
-	if strings.HasPrefix(s.currentDomain.Name, "*.") { // domain starting with *. indicates wildcard
+	var isWildCard bool
+	// Trim the "*." prefix and restore the base domain; it is only needed for pipeline selection.
+	s.currentDomain.Name, isWildCard = strings.CutPrefix(s.currentDomain.Name, "*.") // *. is a magic string; domain starting with *. indicates wildcard
+	if isWildCard {
 		return WildCardDomainPipeline()
 	}
+
 	return SingleDomainPipeline()
 }
 

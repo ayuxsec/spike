@@ -148,9 +148,8 @@ func (s *Scanner) scanDomain(domainName string) (*ScannerOutput, []error) {
 	// Initialize pipeline result cache
 	// ----------------------------------------------------
 	s.cacheResults = make(map[string][]string)
-	s.cacheResults["__root_domain__"] = []string{d.Name} // root domain for tools that need it
-
 	pipeline := s.selectPipeline()
+	s.cacheResults["__root_domain__"] = []string{d.Name} // root domain for tools that need it
 
 	// ----------------------------------------------------
 	// Execute pipeline sequentially
