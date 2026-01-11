@@ -8,3 +8,4 @@
 - [ ] move package db from scanner package to `internal/pkg` folder
 - [ ] Support GNU Bash style history navigation through arrow keys in REPL Shell
 - [ ] Fix Shell redirection not working in REPL
+- [ ] Create docker image
