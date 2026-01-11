@@ -1,5 +1,5 @@
-Spike  
-Copyright (c) 2025 Ayush Kumar (@ayuxsec)  
+Spike
+Copyright (c) 2025 Ayush Kumar (@ayuxsec)
 Released under the MIT License.
 
 ---
@@ -10,20 +10,21 @@ Third-Party Notices
 Spike uses several open-source tools and libraries. Their respective licenses apply.
 
 1. ProjectDiscovery Tools
-   - subfinder  
-   - httpx  
-   - gau  
-   - katana  
-   - nuclei  
+   - subfinder
+   - httpx
+   - gau
+   - katana
+   - nuclei
+   - dnsx
    ProjectDiscovery — https://projectdiscovery.io
 
-2. Cachex  
-   Copyright (c) 2025 Ayush Kumar  
-   https://github.com/ayuxsec/cachex  
+2. Cachex
+   Copyright (c) 2025 Ayush Kumar
+   https://github.com/ayuxsec/cachex
    License: MIT
 
-3. Uro  
-   https://github.com/s0md3v/uro  
+3. Uro
+   https://github.com/s0md3v/uro
    License: Apache
 
 4. Gau

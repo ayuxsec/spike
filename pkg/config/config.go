@@ -33,9 +33,16 @@ type HttxPortsConfig struct {
 }
 
 type SubfinderConfig struct {
-	Threads    int  `yaml:"threads"`
+	Threads    int `yaml:"threads"`
+	ActiveEnum SubsActiveEnumConfig
 	Enabled    bool `yaml:"enabled"`
 	CmdTimeout int  `yaml:"cmd_timeout_in_second"`
+}
+
+type SubsActiveEnumConfig struct {
+	Enabled      bool   `yaml:"enabled"`
+	WordlistMode string `yaml:"wordlist_mode"` // wordlist mode to use (magic string: large, tiny...)
+	DnsxThreads  int    `yaml:"dnsx_threads"`
 }
 
 type KatanaConfig struct {

@@ -22,6 +22,14 @@ func TestRunSubfinder(t *testing.T) {
 	}
 }
 
+func TestRunResub(t *testing.T) {
+	subdomains, err := runResub("example.com", config.GlobalCmdTimeout, "tiny", 200)
+	if err != nil {
+		t.Log(err)
+	}
+	t.Log(subdomains)
+}
+
 func TestSubdomainsBulkInsert(t *testing.T) {
 	subs := []string{"sub1.example.com", "sub2.example.com"}
 

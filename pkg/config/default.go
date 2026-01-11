@@ -25,7 +25,12 @@ func DefaultConfig() *Config {
 				CmdTimeout: GlobalCmdTimeout,
 			},
 			Subfinder: SubfinderConfig{
-				Threads:    10,
+				Threads: 10,
+				ActiveEnum: SubsActiveEnumConfig{
+					Enabled:      true,
+					WordlistMode: "tiny",
+					DnsxThreads:  200,
+				},
 				Enabled:    true,
 				CmdTimeout: GlobalCmdTimeout,
 			},

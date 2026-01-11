@@ -9,3 +9,4 @@
 - [ ] Support GNU Bash style history navigation through arrow keys in REPL Shell
 - [ ] Fix Shell redirection not working in REPL
 - [ ] Create docker image
+- [ ] Update README.md for new changes in subfinder config
